@@ -9,17 +9,21 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * Class that wraps all communication to the Khier Blogger server, No network calls should be done outside the scope
- * this wrapper
+ * Class that wraps all communication to the Khier Blogger server.<br/>
+ * No network calls should be done outside the scope this wrapper.
  */
 
 public class KhierBloggerServer {
-    private final OkHttpClient client = new OkHttpClient();
+
+    private static final OkHttpClient client = new OkHttpClient();
 
     //TODO: update the base url
-    private final String baseUrl = "";
+    private static final String baseUrl = "";
 
-    public void authenticateUser(String email , String password , final UserAuthenticationCallback callback){
+    //Private empty constructor ensures only static access to this class
+    private KhierBloggerServer(){}
+
+    public static void authenticateUser(String email , String password , final UserAuthenticationCallback callback){
         //TODO : Add parameters to the request
         Request request = new Request.Builder()
                 .url(baseUrl).build();
@@ -38,8 +42,6 @@ public class KhierBloggerServer {
             }
         });
     }
-
-
 
     public interface UserAuthenticationCallback{
         void authenticationSuccessful();
