@@ -27,7 +27,7 @@ public class KhierBloggerServer {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                callback.authenticationFailed();
+                callback.authenticationFailed(e.getMessage());
             }
 
             @Override
@@ -43,6 +43,6 @@ public class KhierBloggerServer {
 
     public interface UserAuthenticationCallback{
         void authenticationSuccessful();
-        void authenticationFailed();
+        void authenticationFailed(String message);
     }
 }
