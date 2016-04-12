@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -15,6 +18,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
         Button registrationButton = (Button) findViewById(R.id.registration_button);
         registrationButton.setOnClickListener(this);
+
+        TextView loginTextView = (TextView) findViewById(R.id.login_bottom_text);
+        loginTextView.setOnClickListener(this);
     }
 
     @Override

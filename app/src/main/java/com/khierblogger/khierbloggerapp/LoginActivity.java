@@ -30,7 +30,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.forgot_password_bottom_text:
                 startActivity(new Intent(this , ResetPasswordActivity.class));
                 break;
-
         }
     }
 }
