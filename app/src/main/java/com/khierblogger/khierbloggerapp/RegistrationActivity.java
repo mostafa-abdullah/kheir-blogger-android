@@ -16,6 +16,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
+        Utils.Log("Application started");
+
         Button registrationButton = (Button) findViewById(R.id.registration_button);
         registrationButton.setOnClickListener(this);
 
@@ -27,8 +29,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.registration_button:
-                //check the correct inputs
-                //Post to the server a new user registration
+                //TODO: check the correct inputs
+                //TODO: Post to the server a new user registration
                 break;
             case R.id.login_bottom_text:
                 startActivity(new Intent(this , LoginActivity.class));

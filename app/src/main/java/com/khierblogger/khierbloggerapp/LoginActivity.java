@@ -16,6 +16,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         Button signInButton = (Button)findViewById(R.id.sign_in_button);
         signInButton.setOnClickListener(this);
+
         TextView forgotPasswordTextView = (TextView) findViewById(R.id.forgot_password_bottom_text);
         forgotPasswordTextView.setOnClickListener(this);
     }
@@ -24,8 +25,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.sign_in_button:
-                //check for correct inputs
-                //Post to the server to authenticate the given user
+                //TODO: check for correct inputs
+                //TODO: Post to the server to authenticate the given user
                 break;
             case R.id.forgot_password_bottom_text:
                 startActivity(new Intent(this , ResetPasswordActivity.class));

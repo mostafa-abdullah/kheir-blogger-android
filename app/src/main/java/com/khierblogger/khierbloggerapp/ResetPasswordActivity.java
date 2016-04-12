@@ -16,8 +16,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //check for correct input
-                //Post to the server to reset the password
+                //TODO: check for correct input
+                //TODO: Post to the server to reset the password of the given email
             }
         });
     }
