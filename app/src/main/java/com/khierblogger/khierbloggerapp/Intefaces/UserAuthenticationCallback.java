@@ -1,6 +1,5 @@
 package com.khierblogger.khierbloggerapp.Intefaces;
 
-public interface UserAuthenticationCallback {
+public interface UserAuthenticationCallback extends BaseCallback{
     void authenticationSuccessful();
-    void authenticationFailed(String message);
 }
