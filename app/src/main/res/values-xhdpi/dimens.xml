@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="Login_text_size">45sp</dimen>
+    <dimen name="Login_text_margin_bottom">30dp</dimen>
+    <dimen name="login_layout_margin_top">30dp</dimen>
+    <dimen name="registration_layout_margin_top">20dp</dimen>
+
+</resources>
