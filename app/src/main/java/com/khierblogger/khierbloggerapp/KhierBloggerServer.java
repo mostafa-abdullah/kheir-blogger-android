@@ -8,6 +8,11 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/**
+ * Class that wraps all communication to the Khier Blogger server, No network calls should be done outside the scope
+ * this wrapper
+ */
+
 public class KhierBloggerServer {
     private final OkHttpClient client = new OkHttpClient();
 
