@@ -6,4 +6,7 @@
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="login_text">Khier Blogger</string>
+    <string name="have_an_account">Have an account? Login</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="confirm_password">Confirm password</string>
 </resources>
