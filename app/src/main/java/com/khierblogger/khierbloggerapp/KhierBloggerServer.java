@@ -34,6 +34,12 @@ public class KhierBloggerServer {
     //Private constructor ensures only static access to this class
     private KhierBloggerServer(){}
 
+    /**
+     * Authenticate a user with the sever database
+     * @param email email of the user
+     * @param password password of the user
+     * @param callback callback to pass the results to
+     */
     public static void authenticateUser(String email , String password , final UserAuthenticationCallback callback){
         //TODO : Add parameters to the request
         Request request = new Request.Builder()
@@ -74,16 +80,19 @@ public class KhierBloggerServer {
                 if (response.isSuccessful()){
                     Gson gson = new GsonBuilder().serializeNulls().create();
                     //Make the data more java readable
-                    String jsonResponse = response.body().string().replace("created_at" , "dateCreated").replace("updated_at" , "dateUpdated");
+                    String jsonResponse = response.body().string().replace("created_at" , "dateCreated")
+                            .replace("updated_at" , "dateUpdated");
 
                     JsonParser parser = new JsonParser();
                     JsonArray jArray = parser.parse(jsonResponse).getAsJsonArray();
+
                     ArrayList<Organization> organizations = new ArrayList<>(jArray.size());
                     for (JsonElement element : jArray)
                         organizations.add(gson.fromJson(element , Organization.class));
 
                     callback.onOrganizationFetched(organizations);
-                }
+                }else
+                    callback.onError("Bad response from server");
             }
         });
     }
