@@ -1,7 +1,5 @@
 package com.khierblogger.khierbloggerapp.MainClasses;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.Date;
 
 /**
@@ -20,10 +18,8 @@ public class Organization {
     //TODO: ask why is the location a string, should be longitude and latitude
     private String location;
     private double rate ;
-    @SerializedName("created_at")
-    private Date dateCreated;
-    @SerializedName("updated_at")
-    private Date dateUpdated;
+    private Date created_at;
+    private Date updated_at;
 
     public Organization(int id, String name, String email, String password, String bio, String slogan, String phone, String location,
                         double rate, Date dateCreated, Date dateUpdated) {
@@ -36,8 +32,8 @@ public class Organization {
         this.phone = phone;
         this.location = location;
         this.rate = rate;
-        this.dateCreated = dateCreated;
-        this.dateUpdated = dateUpdated;
+        this.created_at = dateCreated;
+        this.updated_at = dateUpdated;
     }
 
     public int getId() {
@@ -77,11 +73,11 @@ public class Organization {
     }
 
     public Date getDateCreated() {
-        return dateCreated;
+        return created_at;
     }
 
     public Date getDateUpdated() {
-        return dateUpdated;
+        return updated_at;
     }
 
 }

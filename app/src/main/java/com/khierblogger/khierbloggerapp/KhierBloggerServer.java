@@ -5,8 +5,10 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.khierblogger.khierbloggerapp.Intefaces.EventResponseCallback;
 import com.khierblogger.khierbloggerapp.Intefaces.OrganizationsResponseCallback;
 import com.khierblogger.khierbloggerapp.Intefaces.UserAuthenticationCallback;
+import com.khierblogger.khierbloggerapp.MainClasses.Event;
 import com.khierblogger.khierbloggerapp.MainClasses.Organization;
 
 import java.io.IOException;
@@ -40,6 +42,7 @@ public class KhierBloggerServer {
      * @param password password of the user
      * @param callback callback to pass the results to
      */
+
     public static void authenticateUser(String email , String password , final UserAuthenticationCallback callback){
         //TODO : Add parameters to the request
         Request request = new Request.Builder()
@@ -55,7 +58,8 @@ public class KhierBloggerServer {
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()){
                     callback.authenticationSuccessful();
-                }
+                }else
+                    callback.onError("Bad response from the server");
             }
         });
     }
@@ -67,7 +71,7 @@ public class KhierBloggerServer {
 
     public static void getAllOrganizations(final OrganizationsResponseCallback callback){
         final Request request = new Request.Builder()
-                .url(baseUrl + "/api/organization/list").build();
+                .url(baseUrl + "/api/organization").build();
 
         client.newCall(request).enqueue(new Callback() {
             @Override
@@ -78,7 +82,7 @@ public class KhierBloggerServer {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()){
-                    Gson gson = new GsonBuilder().serializeNulls().create();
+                    Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
                     //Make the data more java readable
                     String jsonResponse = response.body().string().replace("created_at" , "dateCreated")
                             .replace("updated_at" , "dateUpdated");
@@ -91,6 +95,36 @@ public class KhierBloggerServer {
                         organizations.add(gson.fromJson(element , Organization.class));
 
                     callback.onOrganizationFetched(organizations);
+                }else
+                    callback.onError("Bad response from server");
+            }
+        });
+    }
+
+    public static void getAllEvents(final EventResponseCallback callback){
+        final Request request = new Request.Builder()
+                .url(baseUrl + "/api/event").build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onError(e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()){
+                    Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd HH:mm:ss")
+                            .create();
+
+                    JsonParser parser = new JsonParser();
+                    JsonArray jArray = parser.parse(response.body().string()).getAsJsonArray();
+
+                    ArrayList<Event> events  = new ArrayList<>(jArray.size());
+                    for (JsonElement element : jArray)
+                        events.add(gson.fromJson(element , Event.class));
+
+                    callback.onEventFetched(events);
                 }else
                     callback.onError("Bad response from server");
             }

@@ -1,19 +1,13 @@
 package com.khierblogger.khierbloggerapp.Activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.khierblogger.khierbloggerapp.Intefaces.OrganizationsResponseCallback;
-import com.khierblogger.khierbloggerapp.KhierBloggerServer;
-import com.khierblogger.khierbloggerapp.MainClasses.Organization;
 import com.khierblogger.khierbloggerapp.R;
-import com.khierblogger.khierbloggerapp.Utils;
-
-import java.util.ArrayList;
 
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener{
 
