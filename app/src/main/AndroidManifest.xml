@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.ResetPasswordActivity" />
-        <activity android:name=".Activities.organizations"></activity>
+        <activity android:name=".OrganizationActivity"></activity>
     </application>
 
 </manifest>

@@ -1,40 +1,55 @@
 package com.khierblogger.khierbloggerapp.Activities;
 
-import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.khierblogger.khierbloggerapp.MainClasses.Organization;
 import com.khierblogger.khierbloggerapp.R;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class OrganizationListAdapter extends ArrayAdapter<Organization> {
-    public OrganizationListAdapter(Context context, Organization[] orgs) {
-        super(context, R.layout.cutom_organization, orgs);
+public class OrganizationListAdapter extends RecyclerView.Adapter<OrganizationListAdapter.OrganizationViewHolder>{
+
+    private List<Organization> organizations ;
+
+    public OrganizationListAdapter(List<Organization> organizations){
+        this.organizations = organizations;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater myInflater= LayoutInflater.from(getContext());
-        View customView = myInflater.inflate(R.layout.cutom_organization, parent, false);
+    public OrganizationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new OrganizationViewHolder(LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.organization_view , parent));
+    }
 
-        Organization org = getItem(position);
-        TextView organizationTitle = (TextView) customView.findViewById(R.id.organizationTitle);
-        ImageView organizationLogo = (ImageView) customView.findViewById(R.id.organizationLogo);
-        RatingBar organizationRating = (RatingBar) customView.findViewById(R.id.organizationRatingBar);
-        TextView organizationDescription = (TextView) customView.findViewById(R.id.organizationDescription);
+    @Override
+    public void onBindViewHolder(OrganizationViewHolder holder, int position) {
+        Organization organization = organizations.get(position);
+        holder.organizationName.setText(organization.getName());
+        holder.organizationSlogan.setText(organization.getSlogan());
+    }
 
-        organizationTitle.setText(org.getName());
-        organizationDescription.setText(org.getBio());
-        organizationRating.setNumStars(5);
-        organizationRating.setRating((float)org.getRate());
-        organizationLogo.setImageResource(R.drawable.user);
+    @Override
+    public int getItemCount() {
+        return organizations.size();
+    }
 
-        return customView;
+    protected static class OrganizationViewHolder extends RecyclerView.ViewHolder{
+
+        ImageView organizationImageView ;
+        TextView organizationName ;
+        TextView organizationSlogan ;
+
+        public OrganizationViewHolder(View itemView) {
+            super(itemView);
+            organizationImageView = (ImageView) itemView.findViewById(R.id.organization_image);
+            organizationName = (TextView) itemView.findViewById(R.id.organization_name);
+            organizationSlogan = (TextView) itemView.findViewById(R.id.organization_slogan);
+        }
     }
 }

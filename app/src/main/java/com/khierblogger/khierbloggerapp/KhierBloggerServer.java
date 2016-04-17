@@ -1,5 +1,7 @@
 package com.khierblogger.khierbloggerapp;
 
+import android.text.style.ReplacementSpan;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -84,11 +86,9 @@ public class KhierBloggerServer {
                 if (response.isSuccessful()){
                     Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
                     //Make the data more java readable
-                    String jsonResponse = response.body().string().replace("created_at" , "dateCreated")
-                            .replace("updated_at" , "dateUpdated");
 
                     JsonParser parser = new JsonParser();
-                    JsonArray jArray = parser.parse(jsonResponse).getAsJsonArray();
+                    JsonArray jArray = parser.parse(response.body().string()).getAsJsonArray();
 
                     ArrayList<Organization> organizations = new ArrayList<>(jArray.size());
                     for (JsonElement element : jArray)
