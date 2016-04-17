@@ -1,10 +1,11 @@
 package com.khierblogger.khierbloggerapp.Activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.khierblogger.khierbloggerapp.MainClasses.Organization;
 import com.khierblogger.khierbloggerapp.R;
 
 public class organizations extends AppCompatActivity {
@@ -14,7 +15,8 @@ public class organizations extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organizations);
 
-        String[] organizations ={"Organization1","Organization2","Organization3","Organization4","Organization5","Organization6"};
+        Organization[] organizations ={new Organization(1, "organization1", "x@x.com", "password", "organization description", "", "12312", "",
+        3, null, null)};
         ListAdapter myAdapter = new OrganizationListAdapter(this,organizations);
         ListView myListView = (ListView) findViewById(R.id.organizationsListView);
         myListView.setAdapter(myAdapter);
