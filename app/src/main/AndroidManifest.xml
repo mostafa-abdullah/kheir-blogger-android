@@ -12,14 +12,17 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.LoginActivity" />
         <activity android:name=".Activities.RegistrationActivity">
+
+        </activity>
+        <activity android:name=".Activities.ResetPasswordActivity" />
+        <activity android:name=".OrganizationActivity" />
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.ResetPasswordActivity" />
-        <activity android:name=".OrganizationActivity"></activity>
     </application>
 
 </manifest>

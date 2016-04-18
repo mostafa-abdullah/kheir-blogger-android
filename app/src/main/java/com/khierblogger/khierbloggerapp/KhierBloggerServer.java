@@ -1,7 +1,5 @@
 package com.khierblogger.khierbloggerapp;
 
-import android.text.style.ReplacementSpan;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
