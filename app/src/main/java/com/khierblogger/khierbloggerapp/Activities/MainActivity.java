@@ -7,7 +7,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
-import com.khierblogger.khierbloggerapp.OrganizationActivity;
 import com.khierblogger.khierbloggerapp.R;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
@@ -25,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initDrawerAndToolbar();
-
-
     }
 
     private void initDrawerAndToolbar() {
@@ -55,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "Manage profile", Toast.LENGTH_SHORT).show();
                                 break;
                             case 1:
-                                startActivity(new Intent(MainActivity.this , OrganizationActivity.class));
+                                startActivity(new Intent(MainActivity.this , OrganizationsListActivity.class));
                                 break;
                             case 2:
                                 //TODO : Create events activity

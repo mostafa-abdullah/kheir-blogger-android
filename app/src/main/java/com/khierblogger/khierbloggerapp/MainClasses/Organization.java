@@ -21,7 +21,7 @@ public class Organization {
     private Date created_at;
     private Date updated_at;
 
-    public Organization(int id, String name, String email, String password, String bio, String slogan, String phone, String location,
+    private Organization(int id, String name, String email, String password, String bio, String slogan, String phone, String location,
                         double rate, Date dateCreated, Date dateUpdated) {
         this.id = id;
         this.name = name;

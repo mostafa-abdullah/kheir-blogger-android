@@ -1,5 +1,9 @@
 package com.khierblogger.khierbloggerapp;
 
+import android.app.Activity;
+import android.content.Context;
+import android.os.AsyncTask;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -64,6 +68,7 @@ public class KhierBloggerServer {
         });
     }
 
+
     /**
      * Gets all organizations on the server
      * @param callback callback to return the results to
@@ -83,7 +88,6 @@ public class KhierBloggerServer {
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()){
                     Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
-                    //Make the data more java readable
 
                     JsonParser parser = new JsonParser();
                     JsonArray jArray = parser.parse(response.body().string()).getAsJsonArray();
@@ -98,6 +102,10 @@ public class KhierBloggerServer {
             }
         });
     }
+    /**
+     * Gets all Events on the server
+     * @param callback callback to return the results to
+     */
 
     public static void getAllEvents(final EventResponseCallback callback){
         final Request request = new Request.Builder()

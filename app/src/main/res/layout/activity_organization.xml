@@ -4,12 +4,13 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <com.khierblogger.khierbloggerapp.CircleImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/google"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="40dp"
+        android:transitionName="@string/organization_image_activity_transaction" />
 
     <TextView
         android:textSize="25sp"
