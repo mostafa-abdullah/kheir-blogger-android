@@ -1,24 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     tools:context=".Activities.OrganizationsListActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
+    <com.khierblogger.khierbloggerapp.CustomViews.ErrorView.ErrorView
+        android:id="@+id/error_view"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbar"
-        android:background="@color/primary"
-        app:titleTextColor="@android:color/white"
-        app:title="@string/organizations"/>
+        app:ev_title="@string/error_view_oops"
+        app:ev_titleColor="@color/DarkBlue"
+        app:ev_subtitle="@string/error_message"
+        app:ev_subtitleColor="@color/Gray"
+        app:ev_showTitle="true"
+        app:ev_showSubtitle="true"
+        app:ev_showRetryButton="true"
+        app:ev_retryButtonText="@string/error_view_retry"
+        app:ev_retryButtonTextColor="@color/DeepPink"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:padding="10dp"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerView"/>
+        android:orientation="vertical">
 
-</LinearLayout>
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            android:background="@color/primary"
+            app:titleTextColor="@android:color/white"
+            app:title="@string/organizations"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recyclerView"/>
+
+    </LinearLayout>
+
+</FrameLayout>

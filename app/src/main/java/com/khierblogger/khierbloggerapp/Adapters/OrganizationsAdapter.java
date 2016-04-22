@@ -11,6 +11,7 @@ import com.khierblogger.khierbloggerapp.CircleImageView;
 import com.khierblogger.khierbloggerapp.Intefaces.OrganizationClickedCallback;
 import com.khierblogger.khierbloggerapp.MainClasses.Organization;
 import com.khierblogger.khierbloggerapp.R;
+import com.khierblogger.khierbloggerapp.Utils;
 
 import java.util.List;
 

@@ -1,8 +1,6 @@
 package com.khierblogger.khierbloggerapp.Intefaces;
 
 
-import android.content.Context;
-
 interface BaseCallback {
 
     /**
@@ -11,6 +9,4 @@ interface BaseCallback {
      */
 
     void onError(String errorMessage);
-
-    Context getContext();
 }

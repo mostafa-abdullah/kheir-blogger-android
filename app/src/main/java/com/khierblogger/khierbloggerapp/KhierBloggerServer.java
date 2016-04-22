@@ -1,9 +1,5 @@
 package com.khierblogger.khierbloggerapp;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.AsyncTask;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -102,6 +98,7 @@ public class KhierBloggerServer {
             }
         });
     }
+
     /**
      * Gets all Events on the server
      * @param callback callback to return the results to
