@@ -4,4 +4,5 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="small_margin">10dp</dimen>
     <dimen name="reset_password_top_margin">100dp</dimen>
+    <dimen name="divider_height">45dp</dimen>
 </resources>

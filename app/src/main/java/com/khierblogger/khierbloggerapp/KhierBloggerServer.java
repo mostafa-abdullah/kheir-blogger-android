@@ -64,6 +64,7 @@ public class KhierBloggerServer {
         });
     }
 
+
     /**
      * Gets all organizations on the server
      * @param callback callback to return the results to
@@ -83,12 +84,9 @@ public class KhierBloggerServer {
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()){
                     Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
-                    //Make the data more java readable
-                    String jsonResponse = response.body().string().replace("created_at" , "dateCreated")
-                            .replace("updated_at" , "dateUpdated");
 
                     JsonParser parser = new JsonParser();
-                    JsonArray jArray = parser.parse(jsonResponse).getAsJsonArray();
+                    JsonArray jArray = parser.parse(response.body().string()).getAsJsonArray();
 
                     ArrayList<Organization> organizations = new ArrayList<>(jArray.size());
                     for (JsonElement element : jArray)
@@ -100,6 +98,11 @@ public class KhierBloggerServer {
             }
         });
     }
+
+    /**
+     * Gets all Events on the server
+     * @param callback callback to return the results to
+     */
 
     public static void getAllEvents(final EventResponseCallback callback){
         final Request request = new Request.Builder()
