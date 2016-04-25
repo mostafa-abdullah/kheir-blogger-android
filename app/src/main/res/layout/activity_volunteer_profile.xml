@@ -58,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Events Attended :-"
-        android:textSize="25dp"
+        android:textSize="21dp"
         android:layout_marginTop="10dp"
         android:paddingLeft="10dp"/>
     <GridView
@@ -67,13 +67,11 @@
         android:layout_height="fill_parent"
         android:numColumns="auto_fit"
         android:columnWidth="90dp"
-        android:horizontalSpacing="10dp"
-        android:verticalSpacing="10dp"
+        android:horizontalSpacing="8dp"
+        android:verticalSpacing="8dp"
         android:gravity="center"
         android:stretchMode="columnWidth"
         android:padding="5dp"
         android:layout_marginTop="10dp">
-
-
     </GridView>
 </LinearLayout>

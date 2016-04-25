@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.OrganizationsListActivity" />
-        <activity android:name=".Activities.VolunteerProfileActivity"></activity>
+        <activity android:name=".Activities.VolunteerProfileActivity" />
     </application>
 
 </manifest>
