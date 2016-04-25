@@ -21,7 +21,7 @@
     <string name="open_source">Open source</string>
     <string name="organization_load_error_message">Couldn\'t load organizations</string>
 
-	<string name="error_view_oops">Whoops!</string>
+    <string name="error_view_oops">Whoops!</string>
     <string name="error_view_retry">RETRY</string>
     <string name="error_message">El data kteer bas ethasharet</string>
     <string name="no_internet_error_message">Are you connected to the internet ? \n or is your internet trolling us ?</string>
