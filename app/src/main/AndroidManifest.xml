@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.LoginActivity" />
-        <activity android:name=".Activities.RegistrationActivity"></activity>
+        <activity android:name=".Activities.RegistrationActivity" />
         <activity android:name=".Activities.ResetPasswordActivity" />
         <activity android:name=".Activities.OrganizationActivity" />
         <activity android:name=".Activities.MainActivity">
@@ -22,7 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.OrganizationsListActivity"></activity>
+        <activity android:name=".Activities.OrganizationsListActivity" />
+        <activity android:name=".Activities.EventActivity" />
+        <activity android:name=".Activities.ReviewsActivity" />
+        <activity android:name=".Activities.SettingsActivity"></activity>
     </application>
 
 </manifest>

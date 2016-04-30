@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.khierblogger.khierbloggerapp;
+package com.khierblogger.khierbloggerapp.CustomViews;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -35,6 +35,8 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+
+import com.khierblogger.khierbloggerapp.R;
 
 public class CircleImageView extends ImageView {
     ///TODO: give credit to hdodenhof/CircleImageView

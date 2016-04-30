@@ -5,9 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.khierblogger.khierbloggerapp.MainClasses.Organization;
 import com.khierblogger.khierbloggerapp.R;
+import com.khierblogger.khierbloggerapp.Utils;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.Drawer;
@@ -15,6 +18,8 @@ import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                                 //TODO : Create events activity
                                 break;
                             case 3:
-                                //TODO : create settings activity
+                                startActivity(new Intent(MainActivity.this , SettingsActivity.class));
                                 break;
                             case 4:
                                 //TODO : create credits and open source Dialog

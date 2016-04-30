@@ -1,8 +1,12 @@
 package com.khierblogger.khierbloggerapp.MainClasses;
 
+import com.khierblogger.khierbloggerapp.MainClasses.Reviews.EventReview;
+
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Event {
+
     private long id;
     private String name ;
     private long organizationId;
@@ -15,8 +19,13 @@ public class Event {
     private Date created_at;
     private Date updated_at;
     private Date deleted_at;
+    private ArrayList<Post> posts;
+    private ArrayList<EventReview> reviews;
+    private ArrayList<Question> questions;
+    private ArrayList<Photo> photos;
 
-    private Event(long id, String name, long organizationId, String description, Date timing, String location, int contactInfoRequired, int needMembership, double rate, Date dateCreated, Date dateUpdated, Date dateDeleted) {
+    private Event(long id, String name, long organizationId, String description, Date timing, String location, int contactInfoRequired, int needMembership, double rate, Date dateCreated, Date dateUpdated, Date dateDeleted
+                    , ArrayList<EventReview> reviews , ArrayList<Question> questions , ArrayList<Photo> photos , ArrayList<Post> posts)  {
         this.id = id;
         this.name = name;
         this.organizationId = organizationId;
@@ -29,6 +38,10 @@ public class Event {
         this.created_at = dateCreated;
         this.updated_at = dateUpdated;
         this.deleted_at = dateDeleted;
+        this.reviews = reviews;
+        this.questions = questions;
+        this.photos = photos;
+        this.posts = posts;
     }
 
     public long getId() {
@@ -77,5 +90,21 @@ public class Event {
 
     public Date getDateDeleted() {
         return deleted_at;
+    }
+
+    public ArrayList<EventReview> getReviews() {
+        return reviews;
+    }
+
+    public ArrayList<Question> getQuestions() {
+        return questions;
+    }
+
+    public ArrayList<Photo> getPhotos() {
+        return photos;
+    }
+
+    public ArrayList<Post> getPosts() {
+        return posts;
     }
 }

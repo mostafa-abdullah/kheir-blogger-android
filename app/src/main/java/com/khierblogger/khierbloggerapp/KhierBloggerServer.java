@@ -5,8 +5,10 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.khierblogger.khierbloggerapp.Intefaces.EventResponseCallback;
-import com.khierblogger.khierbloggerapp.Intefaces.OrganizationsResponseCallback;
+import com.khierblogger.khierbloggerapp.Intefaces.EventCallbacks.EventsResponseCallback;
+import com.khierblogger.khierbloggerapp.Intefaces.EventCallbacks.SingleEventCallback;
+import com.khierblogger.khierbloggerapp.Intefaces.OrganizationCallbacks.OrganizationsResponseCallback;
+import com.khierblogger.khierbloggerapp.Intefaces.OrganizationCallbacks.SingleOrganizationResponseCallback;
 import com.khierblogger.khierbloggerapp.Intefaces.UserAuthenticationCallback;
 import com.khierblogger.khierbloggerapp.MainClasses.Event;
 import com.khierblogger.khierbloggerapp.MainClasses.Organization;
@@ -27,7 +29,9 @@ import okhttp3.Response;
 
 public class KhierBloggerServer {
 
-    private static final OkHttpClient client = new OkHttpClient();
+    private static final OkHttpClient CLIENT = new OkHttpClient();
+    private static final Gson GSON  = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+
 
     //Server is running on localhost
     //TODO: update the base url
@@ -48,10 +52,10 @@ public class KhierBloggerServer {
         Request request = new Request.Builder()
                 .url(baseUrl).build();
 
-        client.newCall(request).enqueue(new Callback() {
+        CLIENT.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                callback.onError(e.getMessage());
+                callback.onFailure(e.getMessage());
             }
 
             @Override
@@ -59,7 +63,7 @@ public class KhierBloggerServer {
                 if (response.isSuccessful()){
                     callback.authenticationSuccessful();
                 }else
-                    callback.onError("Bad response from the server");
+                    callback.onFailure("Bad response from the server");
             }
         });
     }
@@ -71,65 +75,101 @@ public class KhierBloggerServer {
      */
 
     public static void getAllOrganizations(final OrganizationsResponseCallback callback){
-        final Request request = new Request.Builder()
+        final Request request = new Request.Builder().get()
                 .url(baseUrl + "/api/organization").build();
 
-        client.newCall(request).enqueue(new Callback() {
+        CLIENT.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                callback.onError(e.getMessage());
+                callback.onFailure(e.getMessage());
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()){
-                    Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
-
                     JsonParser parser = new JsonParser();
                     JsonArray jArray = parser.parse(response.body().string()).getAsJsonArray();
 
                     ArrayList<Organization> organizations = new ArrayList<>(jArray.size());
                     for (JsonElement element : jArray)
-                        organizations.add(gson.fromJson(element , Organization.class));
+                        organizations.add(GSON.fromJson(element , Organization.class));
 
-                    callback.onOrganizationFetched(organizations);
+                    callback.onOrganizationsFetched(organizations);
                 }else
-                    callback.onError("Bad response from server");
+                    callback.onFailure("Bad response from server");
             }
         });
     }
+
+    public static void getOrganization(long organizationId , final SingleOrganizationResponseCallback callback){
+        final Request request = new Request.Builder().get()
+                .url(baseUrl + "/api/organization/" + organizationId).build();
+
+        CLIENT.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onFailure(e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful())
+                    callback.onOrganizationFetched(GSON.fromJson(response.body().string() , Organization.class));
+                else
+                    callback.onFailure("Bad response from server");
+            }
+        });
+    }
+
 
     /**
      * Gets all Events on the server
      * @param callback callback to return the results to
      */
 
-    public static void getAllEvents(final EventResponseCallback callback){
-        final Request request = new Request.Builder()
+    public static void getAllEvents(final EventsResponseCallback callback){
+        final Request request = new Request.Builder().get()
                 .url(baseUrl + "/api/event").build();
 
-        client.newCall(request).enqueue(new Callback() {
+        CLIENT.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                callback.onError(e.getMessage());
+                callback.onFailure(e.getMessage());
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()){
-                    Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd HH:mm:ss")
-                            .create();
-
                     JsonParser parser = new JsonParser();
                     JsonArray jArray = parser.parse(response.body().string()).getAsJsonArray();
 
                     ArrayList<Event> events  = new ArrayList<>(jArray.size());
                     for (JsonElement element : jArray)
-                        events.add(gson.fromJson(element , Event.class));
+                        events.add(GSON.fromJson(element , Event.class));
 
-                    callback.onEventFetched(events);
+                    callback.onEventsFetched(events);
                 }else
-                    callback.onError("Bad response from server");
+                    callback.onFailure("Bad response from server");
+            }
+        });
+    }
+
+    public static void getEvent(long eventId , final SingleEventCallback callback){
+        final Request request = new Request.Builder().get()
+                .url(baseUrl + "/api/event/" + eventId).build();
+
+        CLIENT.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onFailure(e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful())
+                    callback.onEventFetched(GSON.fromJson(response.body().string() , Event.class));
+                else
+                    callback.onFailure("Bad response from server");
             }
         });
     }

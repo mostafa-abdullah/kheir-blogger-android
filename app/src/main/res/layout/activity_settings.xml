@@ -4,23 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.khierblogger.khierbloggerapp.Activities.MainActivity"
+    tools:context="com.khierblogger.khierbloggerapp.Activities.SettingsActivity"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/toolbar"
-        app:titleTextColor="@android:color/white"
-        android:background="@color/primary" />
+        android:background="@color/primary"
+        app:titleTextColor="@android:color/white"/>
 
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="News feed"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:id="@+id/main_text"/>
+        android:id="@+id/parent_layout"/>
 
 </LinearLayout>

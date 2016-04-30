@@ -15,10 +15,9 @@
         android:id="@+id/parent_layout"
         android:padding="3dp">
 
-        <com.khierblogger.khierbloggerapp.CircleImageView
+        <ImageView
             android:layout_width="70dp"
             android:layout_height="match_parent"
-            android:src="@drawable/google"
             android:id="@+id/organization_image"
             android:transitionName="@string/organization_image_activity_transaction"
             android:layout_centerVertical="true"/>
@@ -28,21 +27,25 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true">
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/organization_image"
+            android:layout_toEndOf="@+id/organization_image">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textStyle="bold"
-                android:id="@+id/organization_name" />
+                android:id="@+id/organization_name"
+                android:gravity="center"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textStyle="italic"
-                android:id="@+id/organization_slogan" />
+                android:id="@+id/organization_slogan"
+                android:gravity="center"/>
 
         </LinearLayout>
 

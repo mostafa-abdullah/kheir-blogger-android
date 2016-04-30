@@ -4,10 +4,10 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.khierblogger.khierbloggerapp.CircleImageView
+    <ImageView
+        android:id="@+id/organization_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/google"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:transitionName="@string/organization_image_activity_transaction" />
@@ -16,7 +16,6 @@
         android:textSize="25sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Google"
         android:textStyle="bold"
         android:gravity="center"
         android:layout_marginTop="20dp"
@@ -26,7 +25,6 @@
         android:id="@+id/organization_slogan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Don't be evil"
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:textStyle="italic"
@@ -76,14 +74,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="@color/accent"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:padding="3dp"
-                android:text="@string/events"/>
+                android:text="@string/events"
+                android:textColor="@color/accent"/>
 
         </LinearLayout>
 
@@ -120,6 +120,7 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="5dp"/>
+        android:padding="5dp"
+        android:id="@+id/events_recyclerView"/>
 
 </LinearLayout>

@@ -7,11 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.khierblogger.khierbloggerapp.CircleImageView;
-import com.khierblogger.khierbloggerapp.Intefaces.OrganizationClickedCallback;
+import com.khierblogger.khierbloggerapp.Intefaces.OrganizationCallbacks.OrganizationClickedCallback;
 import com.khierblogger.khierbloggerapp.MainClasses.Organization;
 import com.khierblogger.khierbloggerapp.R;
-import com.khierblogger.khierbloggerapp.Utils;
 
 import java.util.List;
 
@@ -33,13 +31,14 @@ public class OrganizationsAdapter extends RecyclerView.Adapter<OrganizationsAdap
 
     @Override
     public void onBindViewHolder(final OrganizationViewHolder holder, int position) {
+        holder.organizationImageView.setImageResource(position%2 == 0? R.drawable.google : R.drawable.instagram);
         final Organization organization = organizations.get(position);
         holder.organizationName.setText(organization.getName());
         holder.organizationSlogan.setText(organization.getSlogan());
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               callback.onOrganizationClicked(organization , holder.organizationImageView);
+                callback.onOrganizationClicked(organization, holder.organizationImageView);
             }
         });
     }
@@ -51,14 +50,14 @@ public class OrganizationsAdapter extends RecyclerView.Adapter<OrganizationsAdap
 
     protected static class OrganizationViewHolder extends RecyclerView.ViewHolder{
 
-        CircleImageView organizationImageView ;
+        ImageView organizationImageView ;
         TextView organizationName ;
         TextView organizationSlogan ;
         ViewGroup parentLayout ;
 
         public OrganizationViewHolder(View itemView) {
             super(itemView);
-            organizationImageView = (CircleImageView) itemView.findViewById(R.id.organization_image);
+            organizationImageView = (ImageView) itemView.findViewById(R.id.organization_image);
             organizationName = (TextView) itemView.findViewById(R.id.organization_name);
             organizationSlogan = (TextView) itemView.findViewById(R.id.organization_slogan);
             parentLayout = (ViewGroup) itemView.findViewById(R.id.parent_layout);
